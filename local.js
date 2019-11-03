@@ -12,6 +12,8 @@ local
     .option('-l --local-port <port>', 'local port, default: 1080')
     .option('--log-level <level>', 'log level(debug|info|warn|error|fatal)', /^(debug|info|warn|error|fatal)$/i, 'info')
     .option('--log-file <file>', 'log file')
+    .option('-lu --local-user <localuser>', 'local user')
+    .option('-lp --local-password <localpassword>', 'local password')
     .parse(process.argv);
 
 var relay = new TCPRelay({
@@ -20,7 +22,9 @@ var relay = new TCPRelay({
     serverAddress: local.serverAddress || '127.0.0.1',
     serverPort: local.serverPort || 8388,
     password: local.password || 'shadowsocks-over-websocket',
-    method: local.method || 'aes-256-cfb'
+    method: local.method || 'aes-256-cfb',
+    localUser: local.localUser || 'root',
+    localPassword: local.localPassword || 'password123'
 }, true);
 relay.setLogLevel(local.logLevel);
 relay.setLogFile(local.logFile);
