@@ -320,6 +320,8 @@ TCPRelay.prototype.handleConnectionByLocal = function(connection) {
 	var password = config.password;
 	var serverAddress = config.serverAddress;
 	var serverPort = config.serverPort;
+	var localUser = config.localUser;
+	var localPassword = config.localPassword;
 
 	var logger = self.logger;
 	var encryptor = new Encryptor(password, method);
