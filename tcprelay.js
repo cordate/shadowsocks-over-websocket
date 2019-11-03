@@ -335,6 +335,7 @@ TCPRelay.prototype.handleConnectionByLocal = function(connection) {
 	connections[connectionId] = connection;
 	connection.setKeepAlive(false);
 	connection.on('data', function(data) {
+		logger.info(`输出一些必要数据来进行查看：${data}`)
 		logger.debug(`[${connectionId}]: read data[length = ${data.length}] from client connection at stage[${STAGE[stage]}]`);
 		switch (stage) {
 
